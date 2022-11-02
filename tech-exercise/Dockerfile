@@ -4,4 +4,13 @@ FROM node:15
 # WORKDIR set working dirtory of container
 WORKDIR /app
 ##COPY depencies
-COPY  
+COPY  package.json .
+
+#RUN install depnecies
+RUN npm install 
+
+COPY . ./
+# post listen for
+EXPOSE 3000
+
+CMD ["nodemon", "server/server.js"]
