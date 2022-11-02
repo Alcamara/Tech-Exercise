@@ -10,7 +10,9 @@ COPY  package.json .
 RUN npm install 
 
 COPY . ./
+
+ENV PORT 3000 
 # post listen for
-EXPOSE 3000
+EXPOSE $PORT
 # start server.js
 CMD ["npm", "run" ,"dev"]
