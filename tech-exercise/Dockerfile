@@ -13,4 +13,4 @@ COPY . ./
 # post listen for
 EXPOSE 3000
 # start server.js
-CMD ["node", "server/server.js"]
+CMD ["npm", "run" ,"dev"]
