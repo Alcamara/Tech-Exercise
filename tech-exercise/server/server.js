@@ -9,7 +9,7 @@ app.listen(port, ()=>{
 app.get('/test',(req,res)=>{
 
     const obj = {
-        message: 'Automate all the things!',
+        message: 'Automate all the things!!!',
         //use JavaScript data object and now method to generate timestamp 
         timestamp: Date.now()
     }

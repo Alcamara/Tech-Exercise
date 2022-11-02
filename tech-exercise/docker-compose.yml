@@ -1,11 +1,11 @@
-version: '3'
+version: "3"
 services:
   express-server:
-    build:
+    build: .
     ports:
       - "3000:3000"
     volumes:
       - ./:/app
       - /app/node_modules
-    environments:
+    environment:
       - PORT=3000
