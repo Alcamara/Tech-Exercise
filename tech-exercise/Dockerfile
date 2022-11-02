@@ -12,5 +12,5 @@ RUN npm install
 COPY . ./
 # post listen for
 EXPOSE 3000
-
-CMD ["nodemon", "server/server.js"]
+# start server.js
+CMD ["node", "server/server.js"]
