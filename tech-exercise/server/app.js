@@ -10,7 +10,7 @@ app.get('/',(req,res)=>{
     }
 
     //return 
-    res.send(obj)
+    res.status(200).send(obj)
 })
 
 module.exports = app
