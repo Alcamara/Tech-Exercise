@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: Express-server
-        image: nginx:1.14.2
+        image: 905646509583.dkr.ecr.us-east-2.amazonaws.com/express-image:3dcee3585a2d621575ed91a97075a290831ff362
         ports:
-        - containerPort: 80
+        - containerPort: 3000
