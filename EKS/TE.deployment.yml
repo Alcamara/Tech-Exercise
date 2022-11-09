@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-server-deployment
+  labels:
+    app: express-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: express-server
+  template:
+    metadata:
+      labels:
+        app: express-server
+    spec:
+      containers:
+      - name: express-server
+        image: 905646509583.dkr.ecr.us-east-2.amazonaws.com/express-image:e579f9d90496abff611e41f2230938240148ea1a
+        ports:
+        - containerPort: 3000
