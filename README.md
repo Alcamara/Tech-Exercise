@@ -42,8 +42,5 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-_Note, include this only if you have a license file. GitHub will generate one for you if you want!_
-
-
 ## Support
 If you have suggestions or issues, please email me at Alhousseinec@gmail.com
