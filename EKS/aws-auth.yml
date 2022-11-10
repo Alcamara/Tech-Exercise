@@ -5,8 +5,8 @@ metadata:
   namespace: kube-system
 data:
   mapUsers: |
-    - userarn: arn:aws:iam::905646509583:user/github-WF
-      username: github-WF
+    - userarn: "${AWS-IAM-USERARN}"
+      username: "${AWS-IAM-USERNAME}"
       groups:
         - system:masters
         - project

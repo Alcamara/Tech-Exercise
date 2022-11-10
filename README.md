@@ -29,6 +29,27 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 - Run `npm install`
 
+- Create a `.env` file at the root of the project and paste this line into the file:
+    - AWS-IAM-USERARN=InsertYourUserarn
+    - AWS-IAM-USERNAME=InserYourUsername
+
+
+- Run 
+    ```
+    eksctl create cluster \
+    --name test-cluster2 \
+    --version 1.23 \
+    --region us-east-2 \
+    --nodegroup-name test-nodes \
+    --node-type t3.small \
+    --nodes 1
+    ```
+
+- Delete cluster `eksctl delete cluster --region=us-east-2 --name=test-cluster`
+
+
+
+
 
 
 ## Built With
