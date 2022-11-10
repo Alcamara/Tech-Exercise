@@ -12,4 +12,3 @@ describe("Test the root path", () => {
   });
 });
 
-//test
