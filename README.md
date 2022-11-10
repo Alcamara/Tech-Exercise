@@ -18,37 +18,24 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ### Prerequisites
 
-#### Software
+#### Softwares:
 
 - [Node.js](https://nodejs.org/en/)
 - [AWS CLI](https://aws.amazon.com/cli/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [eksctl](https://github.com/weaveworks/eksctl)
 
-#### Account and Services
+#### Accounts and Services:
 - [AWS account](https://aws.amazon.com/free/)
+    - [EKS]
+    - [ECR]
 
 
 
 ## Development Setup Instructions
 
 - Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-    - AWS_ACCESS_KEY_ID = yourKey
-    - AWS_SECRET_ACCESS_KEY = yourKey
-    - AWS_REGION = yourKey
-    - AWS_BUCKET_NAME = yourKey
-    - REACT_APP_GOOGLE_API_KEY = yourKey
-    - SERVER_SESSION_SECRET = createAnyKeyCombo
 
-## Usage
-How does someone use this application? Tell a user story here.
-
-1. xxx
-2. xxx
-3. xxx
-4. xxx
-5. xxx
-6. xxx
 
 
 ## Built With
