@@ -17,6 +17,7 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 - [AWS CLI](https://aws.amazon.com/cli/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [eksctl](https://github.com/weaveworks/eksctl)
+    - 
 
 #### Accounts and Services:
 - [AWS account](https://aws.amazon.com/free/)
