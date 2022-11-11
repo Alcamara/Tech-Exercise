@@ -17,5 +17,6 @@ spec:
       containers:
       - name: express-server
         image: 905646509583.dkr.ecr.us-east-2.amazonaws.com/express-image:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
