@@ -20,6 +20,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'v1.23' # default is latest stable
+      id: install
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -39,5 +45,11 @@ jobs:
       run: |
         # Build a docker container and
         # push it to ECR so that it can
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t latest .
+        docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+    
+    - name: Delopy image to Amazon EKS
+      run: |
+        kubectl apply -f ./EKS/aws-auth.yml
+        kubectl apply -f ./EKS/TE.deployment.yml
+        kubectl apply -f ./EKS/TE.service.yml    

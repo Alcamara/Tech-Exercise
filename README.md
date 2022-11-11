@@ -48,10 +48,6 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 - Delete cluster `eksctl delete cluster --region=us-east-2 --name=test-cluster`
 
 
-
-
-
-
 ## Built With
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
