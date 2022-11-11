@@ -2,11 +2,11 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: tech-execrise-v2
+  name: TechE
   region: us-east-2
 
 nodeGroups:
-  - name: tech-execrise-v2.1-nodes
-    instanceName: tech-execrise-v2.1-nodes
+  - name: tech-execrise-v3-nodes
+    instanceName: tech-execrise-v3-nodes
     instanceType: t3.small
     desiredCapacity: 1
