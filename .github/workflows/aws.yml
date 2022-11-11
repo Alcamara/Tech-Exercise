@@ -45,11 +45,14 @@ jobs:
       run: |
         # Build a docker container and
         # push it to ECR so that it can
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t latest .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
     
+    - name: Update kube config
+      run: aws eks update-kubeconfig --name TechE --region us-east-2
+
     - name: Delopy image to Amazon EKS
       run: |
-        kubectl apply -f ./EKS/aws-auth.yml
-        kubectl apply -f ./EKS/TE.deployment.yml
-        kubectl apply -f ./EKS/TE.service.yml    
+        kubectl apply -f EKS/aws-auth.yml
+        kubectl apply -f EKS/TE.deployment.yml
+        kubectl apply -f EKS/TE.service.yml    
