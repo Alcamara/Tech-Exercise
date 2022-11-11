@@ -34,18 +34,9 @@ Include one or two screen shots of your project here (optional). Remove if unuse
     - AWS-IAM-USERNAME=InserYourUsername
 
 
-- Run 
-    ```
-    eksctl create cluster \
-    --name test-cluster2 \
-    --version 1.23 \
-    --region us-east-2 \
-    --nodegroup-name test-nodes \
-    --node-type t3.small \
-    --nodes 1
-    ```
+- Create new cluster run `eksctl create cluster -f eksctl/cluster.yml `
 
-- Delete cluster `eksctl delete cluster --region=us-east-2 --name=test-cluster`
+- Delete cluster run `eksctl delete cluster --region=${yourRegion} --name=${yourClusterName}`
 
 
 ## Built With
