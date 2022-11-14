@@ -29,10 +29,7 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 - Run `npm install`
 
-- Create a `.env` file at the root of the project and paste this line into the file:
-    - AWS-IAM-USERARN=InsertYourUserarn
-    - AWS-IAM-USERNAME=InserYourUsername
-
+- Run `aws ecr create-repository --repository-name image2 --region us-east-2`                                    
 
 - Create new cluster run `eksctl create cluster -f eksctl/cluster.yml `
 
