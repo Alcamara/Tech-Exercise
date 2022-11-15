@@ -1,5 +1,6 @@
 name: Create ECR repository and EKS Cluster
 
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
 on:
   workflow_dispatch
 
@@ -37,5 +38,17 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         aws ecr create-repository --repository-name $ECR_REPOSITORY --region $AWS_REGION
-        # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
-        # docker push -a $ECR_REGISTRY/$ECR_REPOSITORY   
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+        docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+    
+
+    - name: eksctl-cmd
+      uses: robatwave/github-action-eksctl@0.1.2
+        with:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ env.AWS_REGION }}
+
+    - name: Create Amazon EKS Cluster
+      run: eksctl create cluster -f eksctl/cluster.yml
+         
