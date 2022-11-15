@@ -67,7 +67,5 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Create Amazon EKS Cluster
-      run: aws eks create-cluster --region $AWS_REGION --name TechE --kubernetes-version 1.23 \
-      --role-arn ${{ secrets.AWS_ROLE }} \
-      --resources-vpc-config subnetIds=subnet-06bc3900c91f1a97f,subnet-0966a4fcb86642b89
+      run: aws eks create-cluster --region $AWS_REGION --name TechE --kubernetes-version 1.23 --role-arn ${{ secrets.AWS_ROLE }} --resources-vpc-config subnetIds=subnet-06bc3900c91f1a97f,subnet-0966a4fcb86642b89
          
