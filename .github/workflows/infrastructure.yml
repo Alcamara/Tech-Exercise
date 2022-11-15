@@ -67,5 +67,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Create Amazon EKS Cluster
-      run: aws eks create-cluster --region $AWS_REGION --name TechE --kubernetes-version 1.23 --role-arn arn:aws:iam::905646509583:user/github-WF --resources-vpc-config subnetIds=subnet-06bc3900c91f1a97f,subnet-0966a4fcb86642b89
+      run: |
+        aws sts get-caller-identity
+        aws eks create-cluster --region $AWS_REGION --name TechE --kubernetes-version 1.23 --role-arn arn:aws:iam::905646509583:user/github-WF --resources-vpc-config subnetIds=subnet-06bc3900c91f1a97f,subnet-0966a4fcb86642b89
          
