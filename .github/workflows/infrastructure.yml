@@ -45,11 +45,17 @@ jobs:
         # push it to ECR so that it can
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
-    
-    # - name: Eksctl tool installer
-    #   uses: moia-oss/setup-eksctl@v1
-    #   with:
-    #     version: '0.118.0'
+
+  create:
+    name: Create EKS Cluster
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Eksctl tool installer
+      uses: moia-oss/setup-eksctl@v1
+      with:
+        version: '0.118.0'
 
     # - name: Create Amazon EKS Cluster
     #   run: eksctl create cluster -f eksctl/cluster.yml
