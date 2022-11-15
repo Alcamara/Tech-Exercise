@@ -41,13 +41,8 @@ jobs:
         # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         # docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
     
-
-    - name: eksctl-cmd
-      uses: robatwave/github-action-eksctl@0.1.2
-      with:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ env.AWS_REGION }}
+    - name: Eksctl tool installer
+      uses: moia-oss/setup-eksctl@v1
 
     - name: Create Amazon EKS Cluster
       run: eksctl create cluster -f eksctl/cluster.yml
