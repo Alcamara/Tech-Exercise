@@ -52,8 +52,10 @@ jobs:
     environment: production
 
     steps:
-    - name: Eksctl tool installer
-      uses: moia-oss/setup-eksctl@v1
+    - name: Checkout
+      uses: actions/checkout@v3
 
+    - name: eksctl-cmd
+      run: docker build -t github-action-eksctl .
 
          
