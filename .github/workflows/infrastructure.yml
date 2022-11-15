@@ -36,6 +36,6 @@ jobs:
       run: |
         # Build a docker container and
         # push it to ECR so that it can
-        aws ecr create-repository --repository-name $ECR_REPOSITORY --region $AWS_REGON
+        aws ecr create-repository --repository-name $ECR_REPOSITORY --region aws-region
         # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         # docker push -a $ECR_REGISTRY/$ECR_REPOSITORY   
