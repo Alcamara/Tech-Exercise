@@ -1,5 +1,8 @@
 name: Create ECR repository and EKS Cluster
 
+on:
+  workflow_dispatch
+
 env:
   AWS_REGION: us-east-2                   
   ECR_REPOSITORY: express-image
