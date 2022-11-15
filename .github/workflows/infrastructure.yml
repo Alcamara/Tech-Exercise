@@ -5,6 +5,7 @@ env:
   ECR_REPOSITORY: express-image
 
 jobs:
+  create:
     name: Create ECR repository
     runs-on: ubuntu-latest
     environment: production
