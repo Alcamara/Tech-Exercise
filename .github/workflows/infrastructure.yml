@@ -52,7 +52,8 @@ jobs:
     environment: production
 
     steps:
-    - name: eksctl-cmd
-      uses: robatwave/github-action-eksctl@0.1.2
+    - name: Eksctl tool installer
+      uses: moia-oss/setup-eksctl@v1
+
 
          
