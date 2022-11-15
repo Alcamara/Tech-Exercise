@@ -56,9 +56,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: eksctl-cmd
-      run: docker build -t github-action-eksctl/.
+      run: docker build -t eksctl -f github-action-eksctl/Dockerfile .
 
-    - name: create eks cluster
-      run: eksctl create cluster -f eksctl/cluster.yml 
+    # - name: create eks cluster
+    #   run: eksctl create cluster -f eksctl/cluster.yml 
 
          
