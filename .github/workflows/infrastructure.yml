@@ -66,6 +66,6 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-     - name: Create Amazon EKS Cluster
-       run: aws eks create-cluster --region $AWS_REGION --name TechE 
+    - name: Create Amazon EKS Cluster
+      run: aws eks create-cluster --region $AWS_REGION --name TechE 
          
