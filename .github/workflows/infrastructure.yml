@@ -87,8 +87,8 @@ jobs:
     
     - name: run eksctl
       run: |
-        aws sts get-caller-identity
-        echo ~/.aws/crendentials
+        aws configure list
+      
         docker run eksctl
 
     # - name: create eks cluster
