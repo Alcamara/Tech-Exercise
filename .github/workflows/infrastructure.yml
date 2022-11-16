@@ -86,7 +86,9 @@ jobs:
       run: docker build -t eksctl -f Dockerfiles/Dockerfile .
     
     - name: run eksctl
-      run: docker run eksctl
+      run: |
+        export role_arn=$AWS_ROLE_ARN 
+        docker run eksctl
 
     # - name: create eks cluster
     #   run: eksctl create cluster -f eksctl/cluster.yml 
