@@ -7,9 +7,28 @@ on:
 env:
   AWS_REGION: us-east-2                   
   ECR_REPOSITORY: express-image
+  NODE_VERSION: '19.1.0'
 
 jobs:
+  test:
+    name: Create ECR repository
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run test
+
+
   ecr:
+    need: test
     name: Create ECR repository
     runs-on: ubuntu-latest
     environment: production
@@ -46,22 +65,22 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
 
-  eks:
-    name: Create EKS Cluster
-    runs-on: ubuntu-latest
-    environment: production
+  # eks:
+  #   name: Create EKS Cluster
+  #   runs-on: ubuntu-latest
+  #   environment: production
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
 
-    - name: eksctl-cmd
-      run: docker build -t eksctl -f Dockerfiles/Dockerfile .
+  #   - name: eksctl-cmd
+  #     run: docker build -t eksctl -f Dockerfiles/Dockerfile .
     
-    - name: run eksctl
-      run: docker run eksctl
+  #   - name: run eksctl
+  #     run: docker run eksctl
 
-    # - name: create eks cluster
-    #   run: eksctl create cluster -f eksctl/cluster.yml 
+  #   # - name: create eks cluster
+  #   #   run: eksctl create cluster -f eksctl/cluster.yml 
 
          
