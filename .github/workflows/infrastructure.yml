@@ -28,7 +28,7 @@ jobs:
 
 
   ecr:
-    need: test
+    
     name: Create ECR repository
     runs-on: ubuntu-latest
     environment: production
