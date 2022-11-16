@@ -84,16 +84,10 @@ jobs:
 
     - name: eksctl-cmd
       run: docker build -t eksctl -f Dockerfiles/Dockerfile .
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
     
     - name: run eksctl
       run: |
+        nano ~/.aws/credentials
         docker run eksctl
 
     # - name: create eks cluster
