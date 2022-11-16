@@ -20,4 +20,5 @@ RUN apk add --update --no-cache --virtual .build-deps curl openssl \
 
 RUN pip3 install --upgrade --user awscli
 
-CMD ["eksctl","create", "cluster", "-f", "eksctl/cluster.yml"]
+ENTRYPOINT ["/usr/local/bin/eksctl"]
+CMD ["create", "cluster", "--name", "TechE", "--version", "1.24", " --region", "us-east-2", "--nodegroup-name", "Nodes","--node-type","t3.small", "--nodes", "2"]

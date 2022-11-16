@@ -8,68 +8,33 @@ env:
   AWS_REGION: us-east-2                   
   ECR_REPOSITORY: express-image
   NODE_VERSION: '19.1.0'
+  AWS_DEFAULT_REGION: us-east-2
 
 jobs:
-  test:
-    name: test server
-    runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+  # test:
+  #   name: test server
+  #   runs-on: ubuntu-latest
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
 
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run test
+  #   - name: Set up Node.js
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: ${{ env.NODE_VERSION }}
+  #       cache: 'npm'
+
+  #   - name: npm install, build, and test
+  #     run: |
+  #       npm install
+  #       npm run test
 
 
-  ecr:
-    needs: test
-    name: Create ECR repository
-    runs-on: ubuntu-latest
-    environment: production
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-
-    - name: Create Amazon ECR
-      id: ECR
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
-      run: aws ecr create-repository --repository-name $ECR_REPOSITORY --region $AWS_REGION
-  
-    - name: Build & Push push to ECR
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
-      run: |
-        # Build a docker container and
-        # push it to ECR so that it can
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
-
-  # eks:
-  #   name: Create EKS Cluster
+  # ecr:
+  #   needs: test
+  #   name: Create ECR repository
   #   runs-on: ubuntu-latest
   #   environment: production
 
@@ -77,13 +42,49 @@ jobs:
   #   - name: Checkout
   #     uses: actions/checkout@v3
 
-  #   - name: eksctl-cmd
-  #     run: docker build -t eksctl -f Dockerfiles/Dockerfile .
-    
-  #   - name: run eksctl
-  #     run: docker run eksctl
+  #   - name: Configure AWS credentials
+  #     uses: aws-actions/configure-aws-credentials@v1
+  #     with:
+  #       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #       aws-region: ${{ env.AWS_REGION }}
 
-  #   # - name: create eks cluster
-  #   #   run: eksctl create cluster -f eksctl/cluster.yml 
+  #   - name: Login to Amazon ECR
+  #     id: login-ecr
+  #     uses: aws-actions/amazon-ecr-login@v1
+
+  #   - name: Create Amazon ECR
+  #     id: ECR
+  #     env:
+  #       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #       IMAGE_TAG: ${{ github.sha }}
+  #     run: aws ecr create-repository --repository-name $ECR_REPOSITORY --region $AWS_REGION
+  
+  #   - name: Build & Push push to ECR
+  #     env:
+  #       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #       IMAGE_TAG: ${{ github.sha }}
+  #     run: |
+  #       # Build a docker image and
+  #       # push it to ECR so that it can
+  #       docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+  #       docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+
+  eks:
+    name: Create EKS Cluster
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: eksctl-cmd
+      run: docker build -t eksctl -f Dockerfiles/Dockerfile .
+    
+    - name: run eksctl
+      run: docker run eksctl
+
+    # - name: create eks cluster
+    #   run: eksctl create cluster -f eksctl/cluster.yml 
 
          
