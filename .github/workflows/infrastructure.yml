@@ -84,10 +84,16 @@ jobs:
 
     - name: eksctl-cmd
       run: docker build -t eksctl -f Dockerfiles/Dockerfile .
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: us-east-2
+        role-to-assume: $AWS_ROLE_ARN
+        role-session-name: MySessionName
     
     - name: run eksctl
       run: |
-        export role_arn=$AWS_ROLE_ARN 
         docker run eksctl
 
     # - name: create eks cluster
