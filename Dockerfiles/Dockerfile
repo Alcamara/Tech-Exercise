@@ -10,9 +10,9 @@ LABEL "homepage"="https://github.com/robatwave/github-action-eksctl"
 LABEL "maintainer"="Rob van Oostrum <rvanoostrum@waveapps.com>"
 
 RUN apk add --update --no-cache --virtual .build-deps curl openssl \
-    && curl -s -o /usr/local/bin/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64 \
+    && curl -s -o /usr/local/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator \
     && chmod +x /usr/local/bin/aws-iam-authenticator \
-    && curl -s -o /tmp/aws-iam-authenticator.sha256 https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/authenticator_0.5.9_checksums.txt \
+    && curl -s -o /tmp/aws-iam-authenticator.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator.sha256 \
     && openssl sha1 -sha256 /usr/local/bin/aws-iam-authenticator \
     && curl -s --location "https://github.com/weaveworks/eksctl/releases/download/0.63.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp \
     && mv /tmp/eksctl /usr/local/bin \
@@ -22,6 +22,3 @@ RUN pip3 install --upgrade --user awscli
 
 
 CMD ["eksctl","create", "cluster", "--name", "TechE", "--version", "1.24", "--region", "us-east-2", "--nodegroup-name", "Nodes","--node-type","t3.small", "--nodes", "2"]
-
-
-
