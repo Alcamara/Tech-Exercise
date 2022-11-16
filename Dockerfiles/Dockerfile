@@ -20,4 +20,4 @@ RUN apk add --update --no-cache --virtual .build-deps curl openssl \
 
 RUN pip3 install --upgrade --user awscli
 
-CMD ["eksctl","version"]
+CMD ["eksctl","create", "cluster", "-f", "eksctl/cluster.yml"]
