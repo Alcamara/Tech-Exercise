@@ -11,7 +11,7 @@ env:
 
 jobs:
   test:
-    name: Create ECR repository
+    name: test server
     runs-on: ubuntu-latest
     steps:
 
