@@ -88,8 +88,8 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-region: us-east-2
-        role-to-assume: $AWS_ROLE_ARN
+        aws-region: ${{ env.AWS_REGION}}
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
         role-session-name: MySessionName
     
     - name: run eksctl
