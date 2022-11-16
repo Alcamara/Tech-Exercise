@@ -87,8 +87,7 @@ jobs:
     
     - name: run eksctl
       run: |
-        aws configure set role_arn $AWS_ROLE_ARN
-        aws configure list
+        aws iam get-role
         docker run eksctl
 
     # - name: create eks cluster
