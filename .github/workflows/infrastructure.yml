@@ -57,6 +57,9 @@ jobs:
 
     - name: eksctl-cmd
       run: docker build -t eksctl -f Dockerfiles/Dockerfile .
+    
+    - name: run eksctl
+      run: docker run eksctl
 
     # - name: create eks cluster
     #   run: eksctl create cluster -f eksctl/cluster.yml 
