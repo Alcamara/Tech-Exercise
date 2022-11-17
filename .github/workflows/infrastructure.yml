@@ -82,13 +82,30 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
     - name: build eksctl-create image
       run: docker build -t eksctl-create -f Dockerfiles/create.Dockerfile/Dockerfile .
     
     - name: run eksctl-create image
       run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl-create 
 
-    - name: Run script
-      run: bash run.sh 
+    - name: Update kube config
+       run: aws eks update-kubeconfig --name TechE --region us-east-2
+    
+    - name: Deploy image to Amazon EKS
+      run: |
+        kubectl apply -f EKS/aws-auth.yml
+        kubectl apply -f EKS/TE.deployment.yml
+        kubectl apply -f EKS/TE.service.yml 
 
          
