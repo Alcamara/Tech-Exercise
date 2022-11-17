@@ -8,7 +8,7 @@ _Duration: 10 days Sprint_
 ## Screen Shot
 
 _Delete EKS Cluster_
-![Delete](https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%205.38.39%20AM.png)
+<img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%205.38.39%20AM.png' height='300'>
 
 ### Prerequisites
 
