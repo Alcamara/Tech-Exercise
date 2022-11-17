@@ -43,8 +43,8 @@ jobs:
 
     steps:
     - name: install
-      run: |
-        docker run -it --name os1 centos:7
+    - uses: browser-actions/setup-firefox@latest
+      run: firefox --version
 
 
 
