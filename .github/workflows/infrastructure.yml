@@ -16,85 +16,85 @@ env:
 
 jobs:
 
-  # test:
-  #   name: test server
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v3
-
-  #   - name: Set up Node.js
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: ${{ env.NODE_VERSION }}
-  #       cache: 'npm'
-
-  #   - name: npm install, build, and test
-  #     run: |
-  #       npm install
-  #       npm run test
-
-
-  chrome:
-    name: Install Chrome
+  test:
+    name: test server
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: build chrome image
-      run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
-    
-    - name: run chrome image
-      run: docker run chrome
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run test
 
 
-
-  # eks:
-  #   name: Create EKS Cluster
+  # chrome:
+  #   name: Install Chrome
   #   runs-on: ubuntu-latest
 
   #   steps:
   #   - name: Checkout
   #     uses: actions/checkout@v3
-    
-  #   - name: Install kubectl
-  #     uses: azure/setup-kubectl@v3
-  #     with:
-  #       version: 'v1.15.0' # default is latest stable
-  #     id: install
 
-  #   - name: Configure AWS credentials
-  #     uses: aws-actions/configure-aws-credentials@v1
-  #     with:
-  #       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #       aws-region: ${{ env.AWS_REGION }}
-
-  #   - name: Login to Amazon ECR
-  #     id: login-ecr
-  #     uses: aws-actions/amazon-ecr-login@v1
-
-  #   - name: build eksctl-create image
-  #     run: docker build -t eksctl-create -f Dockerfiles/create.Dockerfile/Dockerfile .
+  #   - name: build chrome image
+  #     run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
     
-  #   - name: run eksctl-create image
-  #     run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl-create 
+  #   - name: run chrome image
+  #     run: docker run chrome
 
-  #   - name: Update kube config
-  #     run: aws eks update-kubeconfig --name TechE --region us-east-2
+
+
+  eks:
+    name: Create EKS Cluster
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
     
-  #   - name: Deploy image to Amazon EKS
-  #     run: |
-  #       kubectl apply -f EKS/aws-auth.yml
-  #       kubectl apply -f EKS/TE.deployment.yml
-  #       kubectl apply -f EKS/TE.service.yml
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'v1.15.0' # default is latest stable
+      id: install
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: build eksctl-create image
+      run: docker build -t eksctl-create -f Dockerfiles/create.Dockerfile/Dockerfile .
     
-  #   - name: see link
-  #     run: |
-  #       chmod +x open.sh
-  #       ./open.sh
+    - name: run eksctl-create image
+      run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl-create 
+
+    - name: Update kube config
+      run: aws eks update-kubeconfig --name TechE --region us-east-2
+    
+    - name: Deploy image to Amazon EKS
+      run: |
+        kubectl apply -f EKS/aws-auth.yml
+        kubectl apply -f EKS/TE.deployment.yml
+        kubectl apply -f EKS/TE.service.yml
+    
+    - name: see link
+      run: |
+        chmod +x open.sh
+        ./open.sh
 
          
