@@ -43,8 +43,8 @@ jobs:
     steps:
     - uses: browser-actions/setup-firefox@latest
     - run: |
-      firefox --version
-      xdg-open https://www.google.com
+        firefox --version
+        xdg-open https://www.google.com
 
 
 
