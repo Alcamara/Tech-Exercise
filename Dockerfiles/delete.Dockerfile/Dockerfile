@@ -21,5 +21,5 @@ RUN apk add --update --no-cache --virtual .build-deps curl openssl \
 RUN pip3 install --upgrade --user awscli
 
 
-CMD ["eksctl","delete", "cluster", "--name=Tech-Exe", "--region=us-east-2"]
+CMD ["eksctl","delete", "cluster", "--name=TechE", "--region=us-east-2"]
 
