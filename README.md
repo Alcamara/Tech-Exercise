@@ -16,8 +16,6 @@ The purpose of this app is to automate the creation and deployment of an EKS clu
 To get this project going, you need the following:
 - Added AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to GitHub Secrets. Click [here](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md) to learn more
 
-- 
-
 #### Softwares:
 
 - [Node.js](https://nodejs.org/en/)
@@ -31,8 +29,16 @@ To get this project going, you need the following:
     - EKS
     - ECR
 
-
 ## Development Setup Instructions
+
+- npm install
+
+- Build and push Express Dockerfile image to ECR
+
+- Copy image URI from ECR and past it into the image field of the TE.deployment.yml
+
+- Copy & past User ARN into the userarn field in aws-auth.yml 
+
 
 ### Create & Depoly EKS Cluster
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Create%26Deploy-cluster.gif' height='300'>
