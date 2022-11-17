@@ -7,7 +7,6 @@ _Duration: 10 days Sprint_
 
 ## Screen Shot
 
-
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%205.38.39%20AM.png' height='300'>
 
 ### Prerequisites
@@ -28,16 +27,11 @@ _Duration: 10 days Sprint_
 
 ## Development Setup Instructions
 
-- Run `npm install`
-
-- Run `aws ecr create-repository --repository-name image2 --region us-east-2`                                    
-
-- Create new cluster run `eksctl create cluster -f eksctl/cluster.yml `
+### Create & Depoly EKS Cluster
+<img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Create%26Deploy-cluster.gif' height='300'>
 
 ### Delete EKS Cluster
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Create%26Deploy-cluster.gif' height='300'>
-
-- Delete cluster run `eksctl delete cluster --region=${yourRegion} --name=${yourClusterName}`
 
 ## Directory Structure:
 ```
