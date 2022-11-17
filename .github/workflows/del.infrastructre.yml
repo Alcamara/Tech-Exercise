@@ -24,7 +24,7 @@ jobs:
       uses: actions/checkout@v3
     
     - name: build eksctl-delete image
-      run: docker build -t eksctlDel -f Dockerfiles/delete.Dockerfile/Dockerfile .
+      run: docker build -t eksctl-delete -f Dockerfiles/delete.Dockerfile/Dockerfile .
     
     - name: run eksctl-delete image
-      run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl
+      run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl-delete
