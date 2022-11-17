@@ -82,13 +82,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: eksctl-cmd
-      run: docker build -t eksctl -f Dockerfiles/Dockerfile .
+  #   - name: eksctl-cmd
+  #     run: docker build -t eksctl -f Dockerfiles/Dockerfile .
     
-    - name: run eksctl
-      run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl 
+  #   - name: run eksctl
+  #     run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl 
 
-    # - name: create eks cluster
-    #   run: eksctl create cluster -f eksctl/cluster.yml 
+     - name: Run script
+       run: bash run.sh 
 
          
