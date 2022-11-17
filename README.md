@@ -6,9 +6,9 @@ _Duration: 10 days Sprint_
 
 
 ## Screen Shot
-
+<img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%206.14.28%20AM.png' height='300'>
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%205.38.39%20AM.png' height='300'>
-
+<img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%206.26.16%20AM.png' height='300'>
 ### Prerequisites
 
 #### Softwares:
@@ -31,7 +31,7 @@ _Duration: 10 days Sprint_
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Create%26Deploy-cluster.gif' height='300'>
 
 ### Delete EKS Cluster
-<img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Create%26Deploy-cluster.gif' height='300'>
+<img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Delete_EKS_Cluster.gif' height='300'>
 
 ## Directory Structure:
 ```
