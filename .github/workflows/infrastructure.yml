@@ -44,8 +44,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # - name: build chrome image
-    #   run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
+    - name: build chrome image
+      run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
     
     # - name: run chrome image
     #   run: docker run chrome
