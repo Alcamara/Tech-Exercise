@@ -6,6 +6,6 @@ kubectl apply -f ./EKS/TE.service.yml
 Link=$(kubectl get svc express-server-service \
     -o jsonpath="{.status.loadBalancer.ingress[*].hostname}")
 
-open "http://$Link"
+xdg-open "http://$Link"
 
 
