@@ -10,6 +10,8 @@ _Duration: 10 days Sprint_
 
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%205.38.39%20AM.png' height='300'>
 
+<img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Create%26Deploy-cluster.gif' height='300'>
+
 ### Prerequisites
 
 #### Softwares:
