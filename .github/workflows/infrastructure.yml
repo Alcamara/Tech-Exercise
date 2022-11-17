@@ -114,7 +114,9 @@ jobs:
         kubectl apply -f EKS/TE.deployment.yml
         kubectl apply -f EKS/TE.service.yml
     
-    - name: Open browser
-      run: bash open.sh
+    - name: see link
+      run: |
+        chmod +x open.sh
+        ./open.sh
 
          

@@ -3,8 +3,8 @@
 Link=$(kubectl get svc express-server-service \
     -o jsonpath="{.status.loadBalancer.ingress[*].hostname}")
 
-echo $Link
+echo " this is the browser: $Link"
 
-xdg-open "http://$Link"
+
 
 
