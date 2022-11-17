@@ -37,25 +37,26 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ## Directory Structure:
 ```
-|--package.json
-|--package-lock.json
-|--open.sh
-|--.gitignore
-|--server
+|-- package.json
+|-- package-lock.json
+|-- open.sh
+|-- .gitignore
+|-- server
 |   |--app.js
-|   |--server.js
-|--server-test
-|   |--server-test.js
-|--images
-|--EKS
+|   └──server.js
+|-- server-test
+|   └── server-test.js
+|-- images
+|-- EKS
 |   |--aws-auth.yml
 |   |--TE.depolyment.yml
-|   |--Te.service.yml
-|--server
+|   └──Te.service.yml
+|-- Dockerfiles
 |   |--create.Dockerfile
-|   |   |--Dockerfile
-|   |   |    |--delete.Dockerfile
-|   |   |--Dockerfile
+|       └──Dockerfile
+|   |--delete.Dockerfile
+|       └──Dockerfile
+└──.github
 ```
 
 ## Built With
