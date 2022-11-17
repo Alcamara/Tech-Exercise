@@ -7,7 +7,8 @@ _Duration: 10 days Sprint_
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+_Delete EKS Cluster_
+![Delete](https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%205.38.39%20AM.png)
 
 ### Prerequisites
 
