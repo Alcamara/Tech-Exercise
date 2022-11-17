@@ -44,9 +44,7 @@ jobs:
     steps:
     - name: install
       run: |
-        apt-get install -y wget
-        wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        apt-get install ./google-chrome-stable_current_amd64.deb
+        docker run -it --name os1 centos:7
 
 
 
