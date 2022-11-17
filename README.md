@@ -35,6 +35,28 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 - Delete cluster run `eksctl delete cluster --region=${yourRegion} --name=${yourClusterName}`
 
+## Directory Structure:
+```
+|--package.json
+|--package-lock.json
+|--open.sh
+|--.gitignore
+|--server
+|   |--app.js
+|   |--server.js
+|--server-test
+|   |--server-test.js
+|--images
+|--EKS
+|   |--aws-auth.yml
+|   |--TE.depolyment.yml
+|   |--Te.service.yml
+|--server
+|   |--create.Dockerfile
+|   |   |--Dockerfile
+|   |   |    |--delete.Dockerfile
+|   |   |--Dockerfile
+```
 
 ## Built With
 
