@@ -2,13 +2,14 @@
 
 ## Description
 
-_Duration: 10 days Sprint_
+_Duration: 16 days Sprint_
 
 
 ## Screen Shot
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%206.14.28%20AM.png' height='300'>
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%205.38.39%20AM.png' height='300'>
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%206.26.16%20AM.png' height='300'>
+
 ### Prerequisites
 
 #### Softwares:
