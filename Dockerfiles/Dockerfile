@@ -22,3 +22,4 @@ RUN pip3 install --upgrade --user awscli
 
 
 CMD ["eksctl","create", "cluster", "--name", "TechE", "--version", "1.24", "--region", "us-east-2", "--nodegroup-name", "Nodes","--node-type","t3.small", "--nodes", "2"]
+
