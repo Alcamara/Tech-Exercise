@@ -42,7 +42,6 @@ jobs:
 
     steps:
     - name: build chrome image
-    - uses: browser-actions/setup-firefox@latest
     - run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
     
     - name: run chrome image
