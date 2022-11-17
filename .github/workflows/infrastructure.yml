@@ -42,9 +42,13 @@ jobs:
 
     steps:
     - uses: browser-actions/setup-firefox@latest
-    - run: |
-        firefox --version
-        xdg-open https://www.google.com
+
+    - name: build chrome image
+    - run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
+    
+    - name: run chrome image
+      run: docker run chrome
+
 
 
 
