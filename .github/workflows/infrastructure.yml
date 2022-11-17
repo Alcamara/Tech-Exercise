@@ -81,11 +81,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    
-    - uses: azure/setup-kubectl@v3
-      with:
-        version: 'v1.24.0' # default is latest stable
-      id: install
 
     - name: eksctl-cmd
       run: docker build -t eksctl -f Dockerfiles/Dockerfile .
