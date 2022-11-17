@@ -16,35 +16,53 @@ env:
 
 jobs:
 
-  test:
-    name: test server
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
-
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run test
-
-
-  # ecr:
-  #   needs: test
-  #   name: Create ECR repository
+  # test:
+  #   name: test server
   #   runs-on: ubuntu-latest
-  #   environment: production
 
   #   steps:
   #   - name: Checkout
   #     uses: actions/checkout@v3
+
+  #   - name: Set up Node.js
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: ${{ env.NODE_VERSION }}
+  #       cache: 'npm'
+
+  #   - name: npm install, build, and test
+  #     run: |
+  #       npm install
+  #       npm run test
+
+
+  Chrome:
+    name: Create ECR repository
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: install
+      run: |
+        RUN apt-get install -y wget
+        RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        RUN apt-get install ./google-chrome-stable_current_amd64.deb
+
+
+
+  # eks:
+  #   name: Create EKS Cluster
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+    
+  #   - name: Install kubectl
+  #     uses: azure/setup-kubectl@v3
+  #     with:
+  #       version: 'v1.15.0' # default is latest stable
+  #     id: install
 
   #   - name: Configure AWS credentials
   #     uses: aws-actions/configure-aws-credentials@v1
@@ -57,66 +75,24 @@ jobs:
   #     id: login-ecr
   #     uses: aws-actions/amazon-ecr-login@v1
 
-  #   - name: Create Amazon ECR
-  #     id: ECR
-  #     env:
-  #       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-  #       IMAGE_TAG: ${{ github.sha }}
-  #     run: aws ecr create-repository --repository-name $ECR_REPOSITORY --region $AWS_REGION
-  
-  #   - name: Build & Push push to ECR
-  #     env:
-  #       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-  #       IMAGE_TAG: ${{ github.sha }}
+  #   - name: build eksctl-create image
+  #     run: docker build -t eksctl-create -f Dockerfiles/create.Dockerfile/Dockerfile .
+    
+  #   - name: run eksctl-create image
+  #     run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl-create 
+
+  #   - name: Update kube config
+  #     run: aws eks update-kubeconfig --name TechE --region us-east-2
+    
+  #   - name: Deploy image to Amazon EKS
   #     run: |
-  #       # Build a docker image and
-  #       # push it to ECR so that it can
-  #       docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-  #       docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
-
-  eks:
-    name: Create EKS Cluster
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+  #       kubectl apply -f EKS/aws-auth.yml
+  #       kubectl apply -f EKS/TE.deployment.yml
+  #       kubectl apply -f EKS/TE.service.yml
     
-    - name: Install kubectl
-      uses: azure/setup-kubectl@v3
-      with:
-        version: 'v1.15.0' # default is latest stable
-      id: install
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-
-    - name: build eksctl-create image
-      run: docker build -t eksctl-create -f Dockerfiles/create.Dockerfile/Dockerfile .
-    
-    - name: run eksctl-create image
-      run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl-create 
-
-    - name: Update kube config
-      run: aws eks update-kubeconfig --name TechE --region us-east-2
-    
-    - name: Deploy image to Amazon EKS
-      run: |
-        kubectl apply -f EKS/aws-auth.yml
-        kubectl apply -f EKS/TE.deployment.yml
-        kubectl apply -f EKS/TE.service.yml
-    
-    - name: see link
-      run: |
-        chmod +x open.sh
-        ./open.sh
+  #   - name: see link
+  #     run: |
+  #       chmod +x open.sh
+  #       ./open.sh
 
          
