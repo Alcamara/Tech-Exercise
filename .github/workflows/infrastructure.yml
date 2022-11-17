@@ -36,20 +36,19 @@ jobs:
   #       npm run test
 
 
-  Chrome:
+  chrome:
     name: Install Chrome
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: build chrome image
-    - run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
+    # - name: build chrome image
+    #   run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
     
-    - name: run chrome image
-      run: docker run chrome
+    # - name: run chrome image
+    #   run: docker run chrome
 
 
 
