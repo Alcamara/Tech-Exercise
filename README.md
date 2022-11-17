@@ -4,6 +4,7 @@
 
 _Duration: 16 days Sprint_
 
+The purpose of this app is to automate the creation and deployment of an EKS cluster that exposes a REST endpoint. 
 
 ## Screen Shot
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%206.14.28%20AM.png' height='300'>
@@ -11,6 +12,11 @@ _Duration: 16 days Sprint_
 <img src='https://github.com/Alcamara/Tech-Exercise/blob/main/images/Screen%20Shot%202022-11-17%20at%206.26.16%20AM.png' height='300'>
 
 ### Prerequisites
+
+To get this project going, you need the following:
+- Added AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to GitHub Secrets. Click [here](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md) to learn more
+
+- 
 
 #### Softwares:
 
