@@ -53,8 +53,8 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 |   └──Te.service.yml
 |-- Dockerfiles
 |   |--create.Dockerfile
-|       └──Dockerfile
-|   |--delete.Dockerfile
+|   |   └──Dockerfile
+|   └──delete.Dockerfile
 |       └──Dockerfile
 └──.github
 ```
