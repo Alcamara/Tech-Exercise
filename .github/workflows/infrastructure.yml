@@ -39,12 +39,10 @@ jobs:
   Chrome:
     name: Create ECR repository
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
-    - name: install
     - uses: browser-actions/setup-firefox@latest
-      run: firefox --version
+    - run: firefox --version
 
 
 
