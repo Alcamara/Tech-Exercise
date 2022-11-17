@@ -47,8 +47,8 @@ jobs:
     - name: build chrome image
       run: docker build -t chrome -f Dockerfiles/chrome.Dockerfile/Dockerfile .
     
-    # - name: run chrome image
-    #   run: docker run chrome
+    - name: run chrome image
+      run: docker run chrome
 
 
 
