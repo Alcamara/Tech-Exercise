@@ -1,0 +1,30 @@
+name: Delete EKS Cluster
+
+on:
+  workflow_dispatch
+
+env:
+  AWS_REGION: us-east-2                   
+  ECR_REPOSITORY: express-image
+  NODE_VERSION: '19.1.0'
+  AWS_DEFAULT_REGION: us-east-2
+  AWS_ROLE_ARN: ${{ secrets.AWS_ARN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+
+jobs:
+  del:
+    name: Delete Cluster
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: eksctl-cmd
+      run: docker build -t eksctl -f Dockerfiles/delete.Dockerfile/Dockerfile .
+    
+    - name: run eksctl
+      run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} eksctl
